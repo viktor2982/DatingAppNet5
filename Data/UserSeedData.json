@@ -1,6 +1,6 @@
 [
     {
-      "Username": "Randolph",
+      "UserName": "Randolph",
       "Gender": "male",
       "DateOfBirth": "1965-05-17",
       "Password": "password",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "Username": "Everett",
+      "UserName": "Everett",
       "Gender": "male",
       "DateOfBirth": "1970-12-13",
       "Password": "password",
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "Username": "Snyder",
+      "UserName": "Snyder",
       "Gender": "male",
       "DateOfBirth": "1968-09-25",
       "Password": "password",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "Username": "Mckay",
+      "UserName": "Mckay",
       "Gender": "male",
       "DateOfBirth": "1983-08-06",
       "Password": "password",
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "Username": "Harrell",
+      "UserName": "Harrell",
       "Gender": "male",
       "DateOfBirth": "1967-12-01",
       "Password": "password",
@@ -100,7 +100,7 @@
       ]
     },
     {
-        "Username": "Jewell",
+        "UserName": "Jewell",
         "Gender": "female",
         "DateOfBirth": "1983-11-15",
         "Password": "password",
@@ -120,7 +120,7 @@
         ]
     },
     {
-        "Username": "Ana",
+        "UserName": "Ana",
         "Gender": "female",
         "DateOfBirth": "1980-12-30",
         "Password": "password",
@@ -140,7 +140,7 @@
         ]
     },
     {
-        "Username": "Sadie",
+        "UserName": "Sadie",
         "Gender": "female",
         "DateOfBirth": "1977-08-02",
         "Password": "password",
@@ -160,7 +160,7 @@
         ]
     },
     {
-        "Username": "Sophia",
+        "UserName": "Sophia",
         "Gender": "female",
         "DateOfBirth": "1989-05-16",
         "Password": "password",
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "Username": "Deidre",
+        "UserName": "Deidre",
         "Gender": "female",
         "DateOfBirth": "1967-02-07",
         "Password": "password",
@@ -197,6 +197,6 @@
             "Url": "https://randomuser.me/api/portraits/women/99.jpg",
             "IsMain": true
         }
-        ]
+      ]
     }
   ]

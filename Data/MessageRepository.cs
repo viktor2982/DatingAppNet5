@@ -48,9 +48,9 @@ namespace API.Data
 
             query = messageParams.Container switch
             {
-                "Inbox" => query.Where( u => u.Recipient.Username == messageParams.Username && !u.RecipientDeleted ),
-                "Outbox" => query.Where( u => u.Sender.Username == messageParams.Username && !u.SenderDeleted ),
-                _ => query.Where( u => u.Recipient.Username == messageParams.Username && !u.RecipientDeleted && !u.DateRead.HasValue )
+                "Inbox" => query.Where( u => u.Recipient.UserName == messageParams.Username && !u.RecipientDeleted ),
+                "Outbox" => query.Where( u => u.Sender.UserName == messageParams.Username && !u.SenderDeleted ),
+                _ => query.Where( u => u.Recipient.UserName == messageParams.Username && !u.RecipientDeleted && !u.DateRead.HasValue )
             };
 
             var messages = query.ProjectTo<MessageDTO>( _mapper.ConfigurationProvider );
@@ -66,12 +66,12 @@ namespace API.Data
                 .Include( u => u.Recipient )
                     .ThenInclude( p => p.Photos )
                 .Where( m => 
-                    m.Recipient.Username == currentUsername && m.Sender.Username == recipientUsername && !m.RecipientDeleted || 
-                    m.Recipient.Username == recipientUsername && m.Sender.Username == currentUsername && !m.SenderDeleted )
+                    m.Recipient.UserName == currentUsername && m.Sender.UserName == recipientUsername && !m.RecipientDeleted || 
+                    m.Recipient.UserName == recipientUsername && m.Sender.UserName == currentUsername && !m.SenderDeleted )
                 .ToListAsync();
 
             var unreadMessages = messages
-                .Where( m => !m.DateRead.HasValue && m.Recipient.Username == currentUsername )
+                .Where( m => !m.DateRead.HasValue && m.Recipient.UserName == currentUsername )
                 .ToList();
 
             if ( unreadMessages.Any() )
