@@ -30,7 +30,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        // [Authorize(Roles = "Admin,Member")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDTO>>> GetUsers([FromQuery] UserParams userParams)
         {
@@ -46,11 +46,13 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        [Authorize(Roles = "Member")]
+        // [Authorize(Roles = "Admin,Member")]
         [HttpGet("{username}", Name = nameof(GetUser))]
         public async Task<ActionResult<MemberDTO>> GetUser(string username)
         {
-            return await _unitOfWork.UserRepository.GetMemberAsync(username);
+            var currentUsername = User.GetUsername();
+
+            return await _unitOfWork.UserRepository.GetMemberAsync(username, isCurrentUser: currentUsername == username);
         }
 
         [HttpPut]
@@ -85,11 +87,6 @@ namespace API.Controllers
                 Url = uploadResult.SecureUrl.AbsoluteUri,
                 PublicId = uploadResult.PublicId
             };
-
-            if (user.Photos.Count == 0)
-            {
-                photo.IsMain = true;
-            }
 
             user.Photos.Add(photo);
 
@@ -128,7 +125,7 @@ namespace API.Controllers
         {
             var username = User.GetUsername();
 
-            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(username);
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(username, includeAllPhotos: true);
 
             var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
 
